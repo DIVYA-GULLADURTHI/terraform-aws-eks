@@ -46,13 +46,13 @@ pipeline {
                 }
             }
         } 
-         stage('destroy') {
+         stage('apply') {
             steps {
                 script {
                     withAWS(credentials: 'aws-credits', region: 'us-east-1') {
                         sh """
                             cd 70-frontend-alb
-                            terraform destroy -auto-approve
+                            terraform apply -auto-approve
                         """
                     }
                 }
